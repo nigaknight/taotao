@@ -30,11 +30,9 @@ $(function(){
 	var datagrid = $("#contentList");
 	tree.tree({
 		onClick : function(node){
-			if(tree.tree("isLeaf",node.target)){
 				datagrid.datagrid('reload', {
 					categoryId :node.id
 		        });
-			}
 		}
 	});
 });
