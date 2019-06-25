@@ -12,6 +12,7 @@ import redis.clients.jedis.JedisCluster;
 import redis.clients.jedis.JedisPool;
 
 public class TestJedisSingle {
+
 	public void testJedisSingle() {
 		Jedis jedis=new Jedis("192.168.222.128", 6379);
 		jedis.set("name","jack");
@@ -43,7 +44,7 @@ public class TestJedisSingle {
 		System.out.println(key1);
 		cluster.close();
 	}
-	@Test
+
 	public void testSpringSingle() {
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
 		JedisPool jedisPool=(JedisPool) applicationContext.getBean("redisClient");
@@ -53,4 +54,13 @@ public class TestJedisSingle {
 		jedis.close();
 		jedisPool.close();
 	}
+	@Test
+	public void testSpringCluster() {
+		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
+		JedisCluster cluster=(JedisCluster) applicationContext.getBean("redisClientCluster");
+		cluster.set("Cluster","bingo");
+		System.out.println(cluster.get("Cluster"));
+	}
+	
+	
 }
