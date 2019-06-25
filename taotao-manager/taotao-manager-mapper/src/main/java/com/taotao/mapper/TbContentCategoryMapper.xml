@@ -102,6 +102,10 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
+  <delete id="deleteByParentId" parameterType="java.lang.Long">
+  	delete from tb_content_category
+  	where parent_id=#{id,jdbcType=BIGINT}
+  </delete>
   <insert id="insert" parameterType="com.taotao.pojo.TbContentCategory" >
   	<selectKey keyProperty="id" resultType="long" order="AFTER">
   		SELECT LAST_INSERT_ID()
@@ -176,6 +180,9 @@
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
+  </select>
+  <select id="countByParentId" parameterType="java.lang.Long" resultType="java.lang.Integer">
+  	select count(*) from tb_content_category where parent_id=#{id ,jdbcType=BIGINT}
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
     update tb_content_category

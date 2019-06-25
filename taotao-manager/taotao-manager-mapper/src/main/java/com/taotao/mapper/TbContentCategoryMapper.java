@@ -7,10 +7,14 @@ import org.apache.ibatis.annotations.Param;
 
 public interface TbContentCategoryMapper {
     int countByExample(TbContentCategoryExample example);
+    
+    int countByParentId(Long id);
 
     int deleteByExample(TbContentCategoryExample example);
 
     int deleteByPrimaryKey(Long id);
+    
+    int deleteByParentId(Long id);
 
     int insert(TbContentCategory record);
 
