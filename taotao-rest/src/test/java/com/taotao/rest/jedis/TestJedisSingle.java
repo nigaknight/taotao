@@ -44,17 +44,17 @@ public class TestJedisSingle {
 		System.out.println(key1);
 		cluster.close();
 	}
-
+	@Test
 	public void testSpringSingle() {
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
 		JedisPool jedisPool=(JedisPool) applicationContext.getBean("redisClient");
 		Jedis jedis=jedisPool.getResource();
 		jedis.set("spring","bingo");
-		System.out.println(jedis.get("student"));
+		System.out.println(jedis.get("spring"));
 		jedis.close();
 		jedisPool.close();
 	}
-	@Test
+
 	public void testSpringCluster() {
 		ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:spring/applicationContext-jedis.xml");
 		JedisCluster cluster=(JedisCluster) applicationContext.getBean("redisClientCluster");
