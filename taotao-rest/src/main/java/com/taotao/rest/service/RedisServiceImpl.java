@@ -64,5 +64,13 @@ public class RedisServiceImpl implements RedisService {
 		jedis.close();
 		return result;
 	}
+	
+	@Override
+	public long hdel(String hkey,String key) {
+		Jedis jedis=jedisPool.getResource();
+		long result=jedis.hdel(hkey, key);
+		jedis.close();
+		return result;
+	}
 
 }

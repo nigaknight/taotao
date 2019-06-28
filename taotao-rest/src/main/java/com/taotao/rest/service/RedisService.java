@@ -8,5 +8,6 @@ public interface RedisService {
 	public long incr(String key);
 	public long expire(String key, int seconds);
 	public long ttl(String key);
+	long hdel(String hkey, String key);
 
 }
