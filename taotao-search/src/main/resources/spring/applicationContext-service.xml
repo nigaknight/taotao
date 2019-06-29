@@ -9,5 +9,7 @@
 	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
 
 	<!-- 扫描包加载Service实现类 -->
-	<context:component-scan base-package="com.taotao.search.service"></context:component-scan>
+	<context:component-scan base-package="com.taotao.search">
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+	</context:component-scan>
 </beans>
