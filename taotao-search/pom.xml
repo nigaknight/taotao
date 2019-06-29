@@ -6,7 +6,9 @@
 		<artifactId>taotao-parent</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>taotao-rest</artifactId>
+	<groupId>com.taotao</groupId>
+	<artifactId>taotao-search</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<dependencies>
 		<dependency>
@@ -45,10 +47,6 @@
 			<artifactId>jsp-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>redis.clients</groupId>
-			<artifactId>jedis</artifactId>
-		</dependency>
 		<!-- solr客户端 -->
 		<dependency>
 			<groupId>org.apache.solr</groupId>
@@ -62,10 +60,28 @@
 				<groupId>org.apache.tomcat.maven</groupId>
 				<artifactId>tomcat7-maven-plugin</artifactId>
 				<configuration>
-					<port>8081</port>
+					<port>8083</port>
 					<path>/</path>
 				</configuration>
 			</plugin>
 		</plugins>
+			<resources>
+			<resource>
+				<directory>src/main/java</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+					<include>**/*.xml</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
 	</build>
 </project>
